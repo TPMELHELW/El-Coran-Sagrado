@@ -5,7 +5,7 @@ import 'package:quran_app/features/quran/data/data_sources/quran_local_data_sour
 import 'package:quran_app/features/quran/data/data_sources/quran_remote_data_source.dart';
 import 'package:quran_app/features/quran/data/repository/quran_repo_impl.dart';
 import 'package:quran_app/features/quran/domain/repository/quran_repo.dart';
-import 'package:quran_app/features/quran/presentation/controller/quran_controller.dart';
+import 'package:quran_app/features/quran/controller/quran_controller.dart';
 import 'package:get/get.dart';
 import 'package:quran_app/services/api_services.dart';
 import 'package:http/http.dart' as http;

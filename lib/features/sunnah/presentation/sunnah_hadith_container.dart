@@ -33,7 +33,7 @@ class SunnahHadithContainer extends StatelessWidget {
                   var data = ClipboardData(text: explain);
                   await Clipboard.setData(data);
                 },
-                child: Icon(Icons.copy)),
+                child: const Icon(Icons.copy)),
           ],
         ),
         const SizedBox(height: 12),

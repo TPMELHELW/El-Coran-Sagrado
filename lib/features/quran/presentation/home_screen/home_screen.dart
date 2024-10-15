@@ -32,7 +32,7 @@ class HomeScreen extends StatelessWidget {
                       padding: const EdgeInsets.all(10),
                       margin: const EdgeInsets.symmetric(vertical: 10),
                       decoration: BoxDecoration(
-                          color: Color(0xff2A2C41),
+                          color: const Color(0xff2A2C41),
                           borderRadius: BorderRadius.circular(20)),
                       child: GestureDetector(
                         onTap: controller.itemsData[index].onPress,

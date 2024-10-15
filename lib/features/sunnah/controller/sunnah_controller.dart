@@ -74,4 +74,10 @@ class SunnahController extends GetxController {
         filePath: 'assets/pdf/elraheeq.pdf',
         extenstion: 'pdf')
   ];
+
+  @override
+  void onInit() {
+    stateType = StateType.init;
+    super.onInit();
+  }
 }

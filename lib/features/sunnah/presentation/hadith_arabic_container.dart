@@ -31,7 +31,7 @@ class HadithArabicContainer extends StatelessWidget {
                 var data = ClipboardData(text: hadithArabic);
                 await Clipboard.setData(data);
               },
-              child: Icon(Icons.copy)),
+              child: const Icon(Icons.copy)),
           SizedBox(
             width: context.width * 0.7,
             child: Container(

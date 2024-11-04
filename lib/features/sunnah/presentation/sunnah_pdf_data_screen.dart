@@ -9,7 +9,6 @@ class SunnahPdfDataScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(path);
     final SharedPreferences shared = Get.find();
     final pdfController = PdfController(
         document: PdfDocument.openAsset(path),

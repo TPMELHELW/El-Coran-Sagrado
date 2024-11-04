@@ -21,6 +21,8 @@ class QuranController extends GetxController {
   List<Ayah> resultAyat = [];
   List<Ayah> currentAyat = [];
 
+  int currentSurah = 0;
+
   // States
   StateType getSurahsState = StateType.init;
   StateType searchAboutAyahState = StateType.init;
@@ -172,7 +174,6 @@ class QuranController extends GetxController {
     //   return;
     // }
     searchController.value.text = query;
-    print(searchController.value.text);
     for (var surah in surahs) {
       for (var ayat in surah.ayat) {
         if (ayat.arabic_search.contains(query)) {
@@ -185,4 +186,28 @@ class QuranController extends GetxController {
     }
     update();
   }
+
+  var imageData = Rx<Uint8List?>(null);
+
+  Future<void> loadAsset(String path) async {
+    final ByteData data = await rootBundle.load(path);
+    imageData.value = data.buffer.asUint8List();
+  }
+
+  @override
+  void onInit() {
+    loadAsset('assets/images/quran.png');
+    super.onInit();
+  }
+
+  //  HomeCardData(
+  //   title: "Biografía del profeta Muhámmad",
+  //   copyRight:
+  //       'El siguiente contenido no está afiliado al sitio original (no official) .\n Más bien, es mediante la clonación  con web scraping \npara permitir la navegación sin conexión en todos los sitios para adaptarse a los hermanos que no tienen Internet continuo.\n También para facilitar el proceso de búsqueda en todos los sitios en una sola plataforma y facilitar la copia rápida.\n Nota: El contenido no incluye las imágenes, videos o audio originales que se encuentran en los sitios, \n\n Si desea explorar los materiales originales de la fuente,  navegar al sitio original',
+  //   link: '',
+  //   description:
+  //       "La Sunnah del Profeta y las sectas corruptas que la contradicen",
+  //   iconPath: AppSvgs.prophet,
+  //   targetScreen: AppPagesRoutes.prophetScreen,
+  // ),
 }

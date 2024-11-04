@@ -14,12 +14,10 @@ class QuranLocalDataSourceImpl extends QuranLocalDataSource {
     try {
       //
       String? quranJson = await rootBundle.loadString('assets/json/quran.json');
-      print({quranJson});
 
       List<SurahModel> surahs = [];
       if (quranJson.isNotEmpty) {
         List jsonData = json.decode(quranJson);
-        print({jsonData});
         surahs = jsonData
             .map<SurahModel>(
               (surah) => SurahModel.fromJson(surah),
@@ -30,9 +28,7 @@ class QuranLocalDataSourceImpl extends QuranLocalDataSource {
       return surahs;
     } catch (e) {
       log(e.toString());
-      //
-      //
-      // );
+
       rethrow;
     }
   }

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quran_app/core/constant/text_styles.dart';
 import 'package:quran_app/features/quran/domain/entities/surah_entity.dart';
 import 'package:quran_app/features/quran/controller/quran_controller.dart';
+import 'package:quran_app/features/quran/presentation/quran_screen/screens/search_screen.dart';
 import 'package:quran_app/features/quran/presentation/quran_screen/screens/surah_screen.dart';
-import 'package:quran_app/features/quran/presentation/quran_screen/widgets/quran_screen_widgets/build_sliver_appbar.dart';
 import 'package:quran_app/features/quran/presentation/quran_screen/widgets/quran_screen_widgets/soura_select_sliver_context.dart';
 
 class QuranScreen extends GetView<QuranController> {
@@ -12,26 +13,23 @@ class QuranScreen extends GetView<QuranController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Obx(
-        () => CustomScrollView(
-          slivers: [
-            const SliverAppBarWidget(
-              title: "Quran",
-              isSearch: true,
-            ),
-            controller.isSearching.value
-                ? SliverList(
-                    delegate: SliverChildBuilderDelegate(
-                      (context, index) => SearchResultWidget(
-                        searchResult: controller.searchResults[index],
-                      ),
-                      childCount: controller.searchResults.length,
-                    ),
-                  )
-                : SurahSelectSliver(surahs: controller.surahs),
-          ],
+      appBar: AppBar(
+        backgroundColor: const Color(0xff2A2C41),
+        automaticallyImplyLeading: false,
+        centerTitle: true,
+        title: const Text(
+          'Quran',
+          style: Styles.textStyle18Godlen,
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.search, color: Colors.white),
+            onPressed: () => Get.to(() => const SearchScreen()),
+          ),
+        ],
+        elevation: 0,
       ),
+      body: SurahSelectSliver(surahs: controller.surahs),
     );
   }
 }

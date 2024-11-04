@@ -37,7 +37,7 @@ class _SliverAppBarWidgetState extends State<SliverAppBarWidget> {
     var controller = Get.find<QuranController>(); // Get the controller instance
     String appBarTitle = widget.title;
 
-    return SliverAppBar(
+    return AppBar(
       automaticallyImplyLeading: false,
       backgroundColor: widget.backgroundColor,
       leading: !Navigator.canPop(context)
@@ -139,10 +139,7 @@ class _SliverAppBarWidgetState extends State<SliverAppBarWidget> {
         //   ),
         // ),
       ],
-      floating: true,
-      snap: true,
       elevation: 0,
-      pinned: widget.isPinned,
     );
   }
 }

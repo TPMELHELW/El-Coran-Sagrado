@@ -23,14 +23,15 @@ class SouraItem extends StatelessWidget {
         controller.currentAyat = controller.surahs[souraNumber - 1].ayat;
         controller.currentSurrah = souraNumber;
         controller.selectedTafsirs.clear();
+        print(controller.currentSurrah);
         Get.to(() => const SurahScreen());
       },
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 10),
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(28),
-          color: AppColors.kGreenColor,
+          borderRadius: BorderRadius.circular(10),
+          color: AppColors.kPrimaryColor,
         ),
         child: Row(
           children: [

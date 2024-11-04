@@ -1,20 +1,20 @@
 
 
-import '../../data/model/pair_model.dart';
+// import '../../data/model/pair_model.dart';
 
-class Pair {
-  final int id;
-  final String name;
+// class Pair {
+//   final int id;
+//   final String name;
 
-  const Pair({
-    required this.id,
-    required this.name,
-  });
+//   const Pair({
+//     required this.id,
+//     required this.name,
+//   });
 
-  PairModel toModel() {
-    return PairModel(
-      id: id,
-      name: name,
-    );
-  }
-}
+//   PairModel toModel() {
+//     return PairModel(
+//       id: id,
+//       name: name,
+//     );
+//   }
+// }

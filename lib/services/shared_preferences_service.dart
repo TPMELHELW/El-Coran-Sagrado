@@ -24,8 +24,8 @@ class SharedPreferencesService extends GetxService {
     return value;
   }
 
+  bool isSetDone = false;
   Future<Unit> setData({required String key, required dynamic value}) async {
-    bool isSetDone = false;
     if (value is int) {
       isSetDone = await pref.setInt(key, value);
       return Future.value(unit);

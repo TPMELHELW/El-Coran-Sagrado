@@ -17,67 +17,63 @@ class SurahSelectSliver extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: GetBuilder<QuranController>(
-        builder: (controller) => SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                color: AppColors.kPrimaryColor,
-                child: Stack(
-                  children: [
-                    ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(25),
-                          topRight: Radius.circular(25)),
-                      child: Container(
-                        decoration: const BoxDecoration(
-                          color: AppColors.kWhiteColor,
-                        ),
-                        child: HandleStatesWidget(
-                          stateType: controller.getSurahsState,
-                          hasShimmer: true,
-                          shimmerChild: ListView.separated(
-                            physics: const NeverScrollableScrollPhysics(),
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 20, horizontal: 10),
-                            shrinkWrap: true,
-                            itemBuilder: (context, index) =>
-                                PrimaryShimmer.rectangle(
-                              height: Get.height * 0.09,
-                              color: AppColors.kGreenColor,
-                              border: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(25),
-                              ),
-                            ),
-                            separatorBuilder: (context, index) =>
-                                const SizedBox(
-                              height: 15,
-                            ),
-                            itemCount: 8,
-                          ),
-                          child: Column(children: [
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            ...List.generate(
-                              controller.surahs.length,
-                              (index) => SouraItem(
-                                souraNumber: index + 1,
-                                souraName: controller.surahs[index].name,
-                                isSaved: false,
-                              ),
-                            ),
-                          ]),
-                        ),
-                      ),
+    final QuranController controller = QuranController.instance;
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Container(
+            color: AppColors.kPrimaryColor,
+            child: Stack(
+              children: [
+                ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(25),
+                      topRight: Radius.circular(25)),
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      color: AppColors.kWhiteColor,
                     ),
-                  ],
+                    child: HandleStatesWidget(
+                      stateType: controller.getSurahsState,
+                      hasShimmer: true,
+                      shimmerChild: ListView.separated(
+                        physics: const NeverScrollableScrollPhysics(),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 20, horizontal: 10),
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) =>
+                            PrimaryShimmer.rectangle(
+                          height: Get.height * 0.09,
+                          color: AppColors.kPrimaryColor,
+                          border: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(25),
+                          ),
+                        ),
+                        separatorBuilder: (context, index) => const SizedBox(
+                          height: 15,
+                        ),
+                        itemCount: 8,
+                      ),
+                      child: Column(children: [
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        ...List.generate(
+                          controller.surahs.length,
+                          (index) => SouraItem(
+                            souraNumber: index + 1,
+                            souraName: controller.surahs[index].name,
+                            isSaved: false,
+                          ),
+                        ),
+                      ]),
+                    ),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

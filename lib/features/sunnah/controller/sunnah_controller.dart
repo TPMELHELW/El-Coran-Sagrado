@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:quran_app/core/constant/app_enums.dart';
+import 'package:quran_app/features/prophet/view/prophet_screen.dart';
 import 'package:quran_app/features/sunnah/data/model/sunnah_data_model.dart';
 import 'package:quran_app/features/sunnah/data/model/sunnah_item_model.dart';
 import 'package:quran_app/features/sunnah/domain/usecases/get_hadithenc_hadithes_use_case.dart';
@@ -16,6 +17,8 @@ class SunnahController extends GetxController {
       Get.to(() => SunnahPdfDataScreen(
             path: sunnahData[index].filePath,
           ));
+    } else if (sunnahData[index].extenstion == 'screen') {
+      Get.to(() => const ProphetScreen());
     } else {
       await getSunnah(sunnahData[index].filePath);
     }
@@ -43,8 +46,24 @@ class SunnahController extends GetxController {
       },
     );
   }
+  //  HomeCardData(
+  //   title: "Biografía del profeta Muhámmad",
+  //   copyRight:
+  //       'El siguiente contenido no está afiliado al sitio original (no official) .\n Más bien, es mediante la clonación  con web scraping \npara permitir la navegación sin conexión en todos los sitios para adaptarse a los hermanos que no tienen Internet continuo.\n También para facilitar el proceso de búsqueda en todos los sitios en una sola plataforma y facilitar la copia rápida.\n Nota: El contenido no incluye las imágenes, videos o audio originales que se encuentran en los sitios, \n\n Si desea explorar los materiales originales de la fuente,  navegar al sitio original',
+  //   link: '',
+  //   description:
+  //       "La Sunnah del Profeta y las sectas corruptas que la contradicen",
+  //   iconPath: AppSvgs.prophet,
+  //   targetScreen: AppPagesRoutes.prophetScreen,
+  // ),
 
   final List<SunnahItemModel> sunnahData = [
+    SunnahItemModel(
+        title: 'Biografía del profeta Muhámmad',
+        subTitle:
+            'La Sunnah del Profeta y las sectas corruptas que la contradicen',
+        filePath: 'prophet',
+        extenstion: 'screen'),
     SunnahItemModel(
         title: 'La importancia de la Sunnah y los hadices en el Islam',
         subTitle:
